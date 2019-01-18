@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>  Data analytics during outbreaks: Recent experiences of Ebola and Diphtheria</title>
+    <meta charset="utf-8">
+    <meta name="date" content="2019-01-19" />
+    <link rel="stylesheet" href="incl/extra.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <br><svg style="height:0.8em;top:.04em;position:relative;fill:steelblue;" viewBox="0 0 512 512"><path d="M500 384c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v308h436zM372.7 159.5L288 216l-85.3-113.7c-5.1-6.8-15.5-6.3-19.9 1L96 248v104h384l-89.9-187.8c-3.2-6.5-11.4-8.7-17.4-4.7z"/></svg> Data analytics during outbreaks:<br>Recent experiences of Ebola and Diphtheria
+### <div class="line-block">Jonathan Polonsky<br />
+Epidemiologist<br />
+World Health Organization Emergencies Programme</div>
+### 19 Jan 2019
+
+---
+
+layout: true
+class: inverse
+
+&lt;style type="text/css"&gt;
+.remark-inline-code{color: #7f9f7f;}
+.quote{ color: #dca3a3 }
+&lt;/style&gt;
+
+---
+
+
+
+## What does an epidemiologist do?
+
+--
+
+Tough question!
+- Depends on the situation
+- Here we will talk briefly about the (low-level) data analytical needs of a *__field__* epidemiologist
+
+--
+
+Data analytics central to outbreak detection and response
+- Public health response to outbreak begins with descriptive epidemiology - describing the disease in terms of:
+  - __Person__ (WHO) - age, sex, and any other relevant risk factors
+  - __Place__ (WHERE) - maps
+  - __Time__ (WHEN) - epidemic curve
+
+---
+class: middle center
+
+# Diphtheria
+# Bangladesh 
+# Nov 2017 - Ongoing
+    
+---
+
+## Context
+
+- Inter-communal violence in Rakhine state, Myanmar, in August 2017
+
+--
+
+- Influx of &gt; 650,000 new refugees into Bangladesh
+
+--
+
+- High risk of epidemic-prone diseases:
+
+--
+    - Very poor living conditions
+    
+        - Cramped, spontaneous settlements
+        - High levels of faecally-contaminated drinking water (&gt;80%)  
+--
+  
+    - Chronically underserved population
+--
+        - Poor access to health services
+            - Low vaccination coverage
+            - Emergency services, e.g. EmOC
+        - Chronic and acute malnutrition
+
+---
+
+## Context
+
+.pull-left[
+![](img/map_bd.png)
+]
+.pull-right[
+![](img/map.png)
+]
+
+---
+
+## Context
+
+.pull-left[
+![](img/camp_1.png)
+]
+.pull-right[
+![](img/camp_2.png)
+![](img/camp_3.png)
+]
+
+---
+
+## Diphtheria outbreak
+--
+
+- Bacterial infection
+- Person-to-person spread by coughing or sneezing
+- Disease caused by release of bacterial toxin 
+- Can lead to difficulty breathing, heart failure, paralysis, and even death
+--
+
+- Rare outbreaks (recently several within short timeframe)
+
+  - Yemen
+  - Indonesia
+  - Venezuela
+
+--
+
+- Immediate response activities:
+
+--
+    - Establish contact tracing 
+--
+    - Vaccination campaign
+--
+    - Forecasting requirements
+      - Staffing &amp; bed capacity
+      - Chemoprophylaxis &amp; DAT
+--
+    - Generate automated report using linelist data
+
+---
+
+## Data management
+
+- Information flow: 
+
+--
+    - Paper forms filled at HF
+--
+    - Collected daily by epidemiologists and entered into Excel 😭 
+--
+    - Nightly reporting to centralised email
+--
+    - Processed in `R`
+
+---
+
+## Automated data analysis
+
+.pull-left[
+`R` &amp; `RMarkdown` for rapid generation of descriptive epi bulletins
+]
+.pull-right[
+![](img/report.png)
+]
+
+???
+Epi bulletins are key deliverable but one which typically consumes a lot of time each day
+
+---
+
+## Data management issues:
+
+--
+- Delays (poor internet, heavy file) 
+--
+
+- Incomplete data (staff capacity overwhelmed, difficulty updating records) 
+--
+
+- Management of Excel workbooks 
+  - Multiple Tx facilities 
+  - Multiple formats 
+
+---
+ 
+## Forecasting for operational needs purposes
+
+.pull-left[
+- Bed capacity (engagement with GOARN partners and EMTs)
+
+- Diphtheria Antitoxin (limited global supply)
+
+- Antibiotics (treatment + contact tracing)
+]
+
+--
+
+.pull-right[
+![](img/planning_1.png)
+]
+
+---
+ 
+## Forecasting for operational needs purposes
+
+.center[
+![:scale 75%](img/planning_2.png)
+]
+
+--
+
+Clearly, this was a messy, "DIY" fix that needed a more robust system
+
+???
+Shows field reality in absence of off-the-shelf tools
+
+---
+
+# EWARS-in-a-box
+
+--
+
+- WHO-led project
+
+--
+- System for:
+    - __`Early warning`__
+        - Weekly aggregated reporting from __HFs__
+        - e.g. automated analysis of data revealed outbreak of Hep E
+--
+    - __`Alert management`__
+        - Triggering &amp; investigating alerts
+        - Verification &amp; risk assessment
+        - Rapid response teams
+--
+    - __`Outbreak response`__
+        - Linelisting of cases during active outbreaks
+--
+    - Automated analysis and reporting
+--
+- Managed by administrators at various levels in the country
+
+--
+
+N.B. Apart from alerts which can come from community, is largely a health-facility-based system
+        
+
+???
+- Mobile allows for MGMT of data collection &amp; standardised data flow
+- Electronic data capture as close as possible to point of consultation
+
+---
+
+# EWARS-in-a-box
+
+.center[
+.pull-left[
+![](img/cxb_ewars.png)
+.caption[
+EWARS report
+]
+]
+.pull-right[
+![](img/cxb_dpt.png)
+.caption[
+Diphtheria report
+]
+]
+]
+
+---
+class: middle center
+
+# Ebola Virus Disease
+# Democratic Republic of Congo 
+# Aug 2018 - Ongoing
+    
+---
+
+## Context
+
+- Infectious viral disease thought to live in animal resevoir (bats), with occasional spill-over events to humans
+
+- Spread person-to-person through contact with bodily fluid (including sweat) - close contacts
+
+- Has typically high case fatality ratio (CFR), often accompanied by bleeding
+
+--
+
+### Ongoing outbreak
+
+- 680 cases
+
+--
+
+- \&gt;400 deaths (~60% CFR)
+
+--
+
+- Active war zone
+  - highly insecure
+  - highly inaccessible population
+
+---
+class: center middle
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;This is what our &lt;a href="https://twitter.com/WHO?ref_src=twsrc%5Etfw"&gt;@WHO&lt;/a&gt; colleagues face every day in their efforts to protect people from &lt;a href="https://twitter.com/hashtag/Ebola?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Ebola&lt;/a&gt; in &lt;a href="https://twitter.com/hashtag/DRC?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#DRC&lt;/a&gt;. I admire their bravery and dedication to keep the world safe, together with our partners from &lt;a href="https://twitter.com/MONUSCO?ref_src=twsrc%5Etfw"&gt;@MONUSCO&lt;/a&gt;, the UN family and NGOs. &lt;a href="https://twitter.com/hashtag/HealthForAll?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#HealthForAll&lt;/a&gt; &lt;a href="https://t.co/EBVy67tR6E"&gt;pic.twitter.com/EBVy67tR6E&lt;/a&gt;&lt;/p&gt;&amp;mdash; Tedros Adhanom Ghebreyesus (@DrTedros) &lt;a href="https://twitter.com/DrTedros/status/1076031505284190209?ref_src=twsrc%5Etfw"&gt;December 21, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+## Context
+
+.pull-left[
+![:scale 90%](img/motorbikes.jpg)
+![:scale 90%](img/ebola_village.jpg)
+]
+
+--
+
+.pull-right[
+![](img/mobile_lab.jpg)
+]
+
+---
+
+## Dashboard
+
+&lt;!-- &lt;iframe src="https://rpubs.com/who_emergencies/ebola_drc" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt; --&gt;
+![](img/dashboard.png)
+
+???
+focus on the users
+- reduce needs of staff to do these analyses
+- data for decision-making
+
+
+---
+
+## Weekly epidemiological 'deep-dive' slide deck
+
+![](img/handouts.png)
+
+---
+
+## EWARS-in-a-box for alert management
+
+![](img/alerts.png)
+
+N.B. alerts can come from facility or community
+ 
+---
+class: middle centre
+
+# So what about Community-Based Surveillance?
+
+---
+
+- Increasing recognition of the importance of CBS 
+--
+
+&gt; "Community-based surveillance - C'est la base. If the foundations of your house are not solid, the rest of your house will not stand!"
+&gt;
+&gt; &amp;mdash; &lt;cite&gt;Dr. Mike Ryan, WHO Assistant DG for emergencies&lt;/cite&gt;
+
+--
+
+- Facility-based surveillance inherently less sensitive to what is happening at community level, as information limited from reaching formal surveillance system by variety of barriers:
+  - Geographical
+  - Financial
+  - Cultural, ...
+
+--
+
+- However, CBS documented very poorly at the moment
+    - \# households visited, # alerts detected &amp; verified - all captured on loose scraps of paper, verbal reports, in notebooks of staff passing through
+    - Alerts from community can be captured in EWARS tool, but we need something that goes much further...
+
+---
+
+## Closing message
+
+--
+
+- Huge need for a professional tool for this crucial part of the disease surveillance landscape
+
+--
+
+- Currently, there is no robust, agreed-upon and ready-to-use system
+
+--
+
+- This is a gap that _needs_ to be filled 
+  - that is where _we_ come in, and the work we are all contributing to at this codeathon has the potential to serve the needs of humanitarian and outbreak-response community and help us use 
+  *__`information to save lives`__*
+    </textarea>
+<script src="incl/remark-latest.min.js"></script>
+<script src="incl/macros.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+"navigation": "list(click = TRUE, touch = FALSE)",
+"highlightStyle": "zenburn",
+"slideNumberFormat": "%current%",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
